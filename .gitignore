@@ -1,0 +1,13 @@
+__history
+Win32
+*.dres
+*.local
+*.dsk
+*.~dsk
+*.identcache
+*.mes
+*.res
+*.stat
+*.dcu
+__recovery
+*.vlb
