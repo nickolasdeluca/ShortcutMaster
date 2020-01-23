@@ -110,7 +110,7 @@ begin
   finally
     if ShortcutList.Count >= 0 then
     begin
-      for i := 0 to ShortcutList.Count -1 do
+      for i := ShortcutList.Count-1 downto 0 do
       begin
         _Add(ShortcutList.Names[i], ShortcutList.Values[i]);
       end;
