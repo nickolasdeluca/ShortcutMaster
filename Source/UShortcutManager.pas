@@ -82,7 +82,7 @@ begin
                   FMain.RegistryKey,
                   True,
                   edShortcutName.Text,
-                  IncludeTrailingPathDelimiter(edPath.Text));
+                  edPath.Text);
   FMain.LoadShortcuts(True);
   clearFields;
 end;
@@ -151,7 +151,7 @@ begin
   Dialog.Title := Application.Title;
 
   if Dialog.Execute then
-    edPath.Text := Dialog.FileName;
+    edPath.Text := IncludeTrailingPathDelimiter(Dialog.FileName);
 
   FreeAndNil(Dialog);
 end;

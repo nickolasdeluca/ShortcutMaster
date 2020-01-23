@@ -28,7 +28,6 @@ object FShortcutManager: TFShortcutManager
     Caption = 'cpBackground'
     TabOrder = 0
     OnCardChange = cpBackgroundCardChange
-    ExplicitHeight = 311
     object cdNewShortcut: TCard
       Left = 1
       Top = 1
@@ -177,8 +176,6 @@ object FShortcutManager: TFShortcutManager
       Caption = 'cdRemoveShortcut'
       CardIndex = 1
       TabOrder = 1
-      ExplicitLeft = 2
-      ExplicitHeight = 309
       object xgAtalhos: TXDBGrid
         AlignWithMargins = True
         Left = 5
@@ -241,10 +238,6 @@ object FShortcutManager: TFShortcutManager
           Caption = 'Remover Atalho'
           TabOrder = 0
           OnClick = btRemoverClick
-          ExplicitLeft = 144
-          ExplicitTop = 3
-          ExplicitWidth = 75
-          ExplicitHeight = 25
         end
       end
     end
