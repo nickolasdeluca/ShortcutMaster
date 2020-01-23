@@ -2,9 +2,13 @@ object FShortcutManager: TFShortcutManager
   Left = 0
   Top = 0
   Caption = 'Gerenciador de Atalhos'
-  ClientHeight = 311
+  ClientHeight = 236
   ClientWidth = 684
   Color = 9915136
+  Constraints.MaxHeight = 275
+  Constraints.MaxWidth = 700
+  Constraints.MinHeight = 125
+  Constraints.MinWidth = 700
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -18,25 +22,22 @@ object FShortcutManager: TFShortcutManager
     Left = 0
     Top = 0
     Width = 684
-    Height = 311
+    Height = 236
     Align = alClient
     ActiveCard = cdRemoveShortcut
     Caption = 'cpBackground'
     TabOrder = 0
-    ExplicitLeft = 1
-    ExplicitTop = 1
-    ExplicitWidth = 659
-    ExplicitHeight = 428
+    OnCardChange = cpBackgroundCardChange
+    ExplicitHeight = 311
     object cdNewShortcut: TCard
       Left = 1
       Top = 1
       Width = 682
-      Height = 309
+      Height = 234
       Caption = 'cdNewShortcut'
       CardIndex = 0
       TabOrder = 0
-      ExplicitWidth = 657
-      ExplicitHeight = 426
+      ExplicitHeight = 309
       object lbShortcutName: TLabel
         Left = 8
         Top = 11
@@ -172,12 +173,13 @@ object FShortcutManager: TFShortcutManager
       Left = 1
       Top = 1
       Width = 682
-      Height = 309
+      Height = 234
       Caption = 'cdRemoveShortcut'
       CardIndex = 1
       TabOrder = 1
-      ExplicitHeight = 300
-      object XDBGrid1: TXDBGrid
+      ExplicitLeft = 2
+      ExplicitHeight = 309
+      object xgAtalhos: TXDBGrid
         AlignWithMargins = True
         Left = 5
         Top = 5
@@ -188,13 +190,89 @@ object FShortcutManager: TFShortcutManager
         Margins.Right = 5
         Margins.Bottom = 5
         Align = alTop
+        DataSource = DSAtalhos
         TabOrder = 0
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
         TitleFont.Height = -11
         TitleFont.Name = 'Segoe UI'
         TitleFont.Style = []
+        Columns = <
+          item
+            Expanded = False
+            FieldName = 'Atalho'
+            Width = 130
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'Diretorio'
+            Title.Caption = 'Diret'#243'rio'
+            Width = 500
+            Visible = True
+          end>
+      end
+      object pnButtons: TPanel
+        AlignWithMargins = True
+        Left = 5
+        Top = 190
+        Width = 672
+        Height = 34
+        Margins.Left = 5
+        Margins.Top = 0
+        Margins.Right = 5
+        Margins.Bottom = 5
+        Align = alTop
+        BevelOuter = bvNone
+        Caption = 'pnButtons'
+        ShowCaption = False
+        TabOrder = 1
+        object btRemover: TButton
+          AlignWithMargins = True
+          Left = 275
+          Top = 0
+          Width = 122
+          Height = 34
+          Margins.Left = 275
+          Margins.Top = 0
+          Margins.Right = 275
+          Margins.Bottom = 0
+          Align = alClient
+          Caption = 'Remover Atalho'
+          TabOrder = 0
+          OnClick = btRemoverClick
+          ExplicitLeft = 144
+          ExplicitTop = 3
+          ExplicitWidth = 75
+          ExplicitHeight = 25
+        end
       end
     end
+  end
+  object CDSAtalhos: TClientDataSet
+    PersistDataPacket.Data = {
+      530000009619E0BD010000001800000002000000000003000000530006417461
+      6C686F01004900000001000557494454480200020064000944697265746F7269
+      6F020049000000010005574944544802000200E8030000}
+    Active = True
+    Aggregates = <>
+    Params = <>
+    Left = 48
+    Top = 72
+    object CDSAtalhosAtalho: TStringField
+      DisplayWidth = 34
+      FieldName = 'Atalho'
+      Size = 100
+    end
+    object CDSAtalhosDiretorio: TStringField
+      DisplayWidth = 1000
+      FieldName = 'Diretorio'
+      Size = 1000
+    end
+  end
+  object DSAtalhos: TDataSource
+    DataSet = CDSAtalhos
+    Left = 48
+    Top = 120
   end
 end

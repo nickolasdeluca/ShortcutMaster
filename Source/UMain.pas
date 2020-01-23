@@ -35,7 +35,7 @@ type
     { Private declarations }
   public
     { Public declarations }
-    procedure LoadShortcuts(Reload: Boolean);
+    procedure loadShortcuts(Reload: Boolean);
     const RegistryKey = 'SOFTWARE\ShortcutMaster\List';
   end;
 
@@ -79,7 +79,7 @@ begin
   ShellExecute(Application.Handle, 'open', PWideChar('http://'+lbGithubLink.Caption), nil, nil, 0);
 end;
 
-procedure TFMain.LoadShortcuts(Reload: Boolean);
+procedure TFMain.loadShortcuts(Reload: Boolean);
 var
   i:Integer;
   ShortcutList: TKeyListValues;

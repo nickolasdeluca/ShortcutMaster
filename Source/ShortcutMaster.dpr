@@ -12,6 +12,7 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.ShowMainForm := False;
+  Application.Title := 'Shortcut Master v1';
   Application.CreateForm(TFMain, FMain);
   Application.CreateForm(TFShortcutManager, FShortcutManager);
   Application.Run;
