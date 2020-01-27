@@ -21,6 +21,7 @@ type
     btRemoveShortcut: TMenuItem;
     N1: TMenuItem;
     miCloseApplication: TMenuItem;
+    miOpcoes: TMenuItem;
     procedure CDSAtalhosAfterPost(DataSet: TDataSet);
     procedure CDSAtalhosBeforeDelete(DataSet: TDataSet);
     procedure miClick(Sender: TObject);
@@ -30,8 +31,8 @@ type
     procedure tiTrayManagerDblClick(Sender: TObject);
     procedure CDSAtalhosAfterDelete(DataSet: TDataSet);
   private
-    procedure AddAtalho(_Shortcut, _Diretorio: String);
     { Private declarations }
+    procedure AddAtalho(_Shortcut, _Diretorio: String);
   public
     { Public declarations }
     procedure LoadShortcut;
@@ -207,7 +208,7 @@ begin
   popItem.Tag := 1;
   popItem.OnClick := miClick;
 
-  popShortcuts.Items.Insert(0, popItem);
+  popShortcuts.Items.Add(popItem);
 end;
 
 procedure TDMAtalhos.LoadShortcut;
@@ -220,7 +221,7 @@ begin
   finally
     if ShortcutList.Count >= 0 then
     begin
-      for i := ShortcutList.Count -1 downto 0 do
+      for i := 0 to ShortcutList.Count-1 do
       begin
         AddAtalho(ShortcutList.Names[i], ShortcutList.Values[i]);
       end;

@@ -2,7 +2,7 @@ object FMain: TFMain
   Left = 0
   Top = 0
   BorderStyle = bsNone
-  Caption = 'FMain'
+  Caption = 'Shortcut Master v1'
   ClientHeight = 400
   ClientWidth = 400
   Color = 9915136

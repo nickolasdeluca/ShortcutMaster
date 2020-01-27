@@ -106,8 +106,8 @@
         <VerInfo_AutoGenVersion>true</VerInfo_AutoGenVersion>
         <PostBuildEvent><![CDATA[upx "$(OUTPUTPATH)"
 $(PostBuildEvent)]]></PostBuildEvent>
-        <VerInfo_Keys>CompanyName=Stark Industries;FileDescription=Gerenciador de Atalhos do Windows;FileVersion=1.0.0.3;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.ShortcutMaster;ProductName=ShortcutMaster;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
-        <VerInfo_Build>3</VerInfo_Build>
+        <VerInfo_Keys>CompanyName=Stark Industries;FileDescription=Gerenciador de Atalhos do Windows;FileVersion=1.0.0.4;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.ShortcutMaster;ProductName=ShortcutMaster;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <VerInfo_Build>4</VerInfo_Build>
     </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">

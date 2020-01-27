@@ -3157,23 +3157,26 @@ object DMAtalhos: TDMAtalhos
   object popShortcuts: TPopupMenu
     Left = 120
     Top = 72
-    object N2: TMenuItem
-      Caption = '-'
-    end
-    object miCreateShortcut: TMenuItem
-      Caption = 'Novo Atalho'
-      OnClick = miCreateShortcutClick
-    end
-    object btRemoveShortcut: TMenuItem
-      Caption = 'Remover Atalho'
-      OnClick = btRemoveShortcutClick
+    object miOpcoes: TMenuItem
+      Caption = '&Op'#231#245'es'
+      object miCreateShortcut: TMenuItem
+        Caption = '&Novo Atalho'
+        OnClick = miCreateShortcutClick
+      end
+      object btRemoveShortcut: TMenuItem
+        Caption = '&Remover Atalho'
+        OnClick = btRemoveShortcutClick
+      end
+      object N2: TMenuItem
+        Caption = '-'
+      end
+      object miCloseApplication: TMenuItem
+        Caption = '&Fechar'
+        OnClick = miCloseApplicationClick
+      end
     end
     object N1: TMenuItem
       Caption = '-'
-    end
-    object miCloseApplication: TMenuItem
-      Caption = 'Fechar'
-      OnClick = miCloseApplicationClick
     end
   end
 end
