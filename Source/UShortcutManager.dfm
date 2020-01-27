@@ -36,7 +36,6 @@ object FShortcutManager: TFShortcutManager
       Caption = 'cdNewShortcut'
       CardIndex = 0
       TabOrder = 0
-      ExplicitHeight = 309
       object lbShortcutName: TLabel
         Left = 8
         Top = 11
@@ -187,7 +186,7 @@ object FShortcutManager: TFShortcutManager
         Margins.Right = 5
         Margins.Bottom = 5
         Align = alTop
-        DataSource = DSAtalhos
+        DataSource = DMAtalhos.DSAtalhos
         TabOrder = 0
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
@@ -241,31 +240,5 @@ object FShortcutManager: TFShortcutManager
         end
       end
     end
-  end
-  object CDSAtalhos: TClientDataSet
-    PersistDataPacket.Data = {
-      530000009619E0BD010000001800000002000000000003000000530006417461
-      6C686F01004900000001000557494454480200020064000944697265746F7269
-      6F020049000000010005574944544802000200E8030000}
-    Active = True
-    Aggregates = <>
-    Params = <>
-    Left = 48
-    Top = 72
-    object CDSAtalhosAtalho: TStringField
-      DisplayWidth = 34
-      FieldName = 'Atalho'
-      Size = 100
-    end
-    object CDSAtalhosDiretorio: TStringField
-      DisplayWidth = 1000
-      FieldName = 'Diretorio'
-      Size = 1000
-    end
-  end
-  object DSAtalhos: TDataSource
-    DataSet = CDSAtalhos
-    Left = 48
-    Top = 120
   end
 end

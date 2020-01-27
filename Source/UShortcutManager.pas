@@ -30,10 +30,6 @@ type
     xgAtalhos: TXDBGrid;
     pnButtons: TPanel;
     btRemover: TButton;
-    CDSAtalhos: TClientDataSet;
-    DSAtalhos: TDataSource;
-    CDSAtalhosAtalho: TStringField;
-    CDSAtalhosDiretorio: TStringField;
     procedure btResetFieldsClick(Sender: TObject);
     procedure btSaveShortcutClick(Sender: TObject);
     procedure sbSelectFolderClick(Sender: TObject);
@@ -44,7 +40,6 @@ type
   private
     { Private declarations }
     procedure clearFields;
-    procedure loadShortcuts;
   public
     { Public declarations }
     procedure setActiveCard(Card: TCard);
@@ -58,13 +53,11 @@ implementation
 
 {$R *.dfm}
 
-uses UMain;
+uses UMain, UDMAtalhos;
 
 procedure TFShortcutManager.btRemoverClick(Sender: TObject);
 begin
-  DeleteValueFromRegistry(CurrentUser, FMain.RegistryKey, False, CDSAtalhosAtalho.AsString);
-  CDSAtalhos.Delete;
-  FMain.loadShortcuts(True);
+  DMAtalhos.DeleteShortcut(DMAtalhos.CDSAtalhosAtalho.AsString);
 end;
 
 procedure TFShortcutManager.btResetFieldsClick(Sender: TObject);
@@ -78,12 +71,8 @@ begin
      String(edPath.Text).IsEmpty then
     Exit;
 
-  WriteToRegistry(CurrentUser,
-                  FMain.RegistryKey,
-                  True,
-                  edShortcutName.Text,
-                  edPath.Text);
-  FMain.LoadShortcuts(True);
+  DMAtalhos.SaveShortcut(edShortcutName.Text, edPath.Text);
+  DMAtalhos.ReloadShortcut;
   clearFields;
 end;
 
@@ -97,33 +86,7 @@ procedure TFShortcutManager.cpBackgroundCardChange(Sender: TObject; PrevCard,
   NextCard: TCard);
 begin
   if NextCard = cdRemoveShortcut then
-    loadShortcuts;
-end;
-
-procedure TFShortcutManager.loadShortcuts;
-var
-  ShortcutList: TKeyListValues;
-  i: Integer;
-  procedure _Add(_Shortcut: String; _Diretorio: String);
-  begin
-    CDSAtalhos.Open;
-    CDSAtalhos.Append;
-    CDSAtalhosAtalho.AsString := _Shortcut;
-    CDSAtalhosDiretorio.AsString := _Diretorio;
-    CDSAtalhos.Post;
-  end;
-begin
-  try
-    ShortcutList := ReadFromRegistry(CurrentUser, FMain.RegistryKey);
-  finally
-    if ShortcutList.Count >= 0 then
-    begin
-      for i := 0 to ShortcutList.Count -1 do
-      begin
-        _Add(ShortcutList.Names[i], ShortcutList.Values[i]);
-      end;
-    end;
-  end;
+    DMAtalhos.ReloadShortcut;
 end;
 
 procedure TFShortcutManager.sbSelectFileClick(Sender: TObject);
